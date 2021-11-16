@@ -18,3 +18,20 @@ fs.mkdir('tutorial', (err)=>{
         })
     }
 })
+
+//Create a folder and a file to it
+fs.mkdir('tutorial', (err)=>{
+    if(err){
+        console.log(err)
+    }
+    else{
+        fs.writeFile('tutorial/tutorial_file.js', 'an example', (err)=>{
+            if(err){
+                console.log(err)
+            }
+            else{
+                console.log("Folder created, file added")
+            }
+        })
+    }
+})
