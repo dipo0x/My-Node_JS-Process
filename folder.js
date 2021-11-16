@@ -1,6 +1,7 @@
 //Importing the Required module
 const fs = require('fs');
 
+
 //Create folder
 fs.mkdir('tutorial', (err)=>{
     if(err){
@@ -35,3 +36,25 @@ fs.mkdir('tutorial', (err)=>{
         })
     }
 })
+
+//Read a folder content and delete the folder contents
+fs.readdir('example', (err, files)=>{
+    if(err){
+        console.log(err)
+    }
+    else{
+        for(let file of files){
+            console.log(file)
+            fs.unlink('example/' + file, (err)=> {
+            if (err){
+                console.log()
+            }
+            else{
+                console.log("Deleted")
+            }
+                    }
+                )
+            }
+        }
+    }
+)
