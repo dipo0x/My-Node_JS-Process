@@ -19,7 +19,7 @@ fs.writeFile('example.txt', 'this is a text file', (err)=> {
     }
 });
 
-//Renaming the Required module
+//Renaming the file
 fs.rename('example.txt', 'example2.txt', (err)=> {
     if (err){
         console.log(err)      
