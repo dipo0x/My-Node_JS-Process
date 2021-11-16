@@ -30,7 +30,7 @@ fs.rename('example.txt', 'example2.txt', (err)=> {
 })
 
 
-//Appenind more data to the file
+//Appending more data to the file
 fs.appendFile('example2.txt', ', the data I want to append', (err)=> {
     if (err){
         console.log(err)      
