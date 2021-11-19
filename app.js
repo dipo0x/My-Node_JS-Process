@@ -15,7 +15,7 @@ app.get('/',(req, res)=> {
 app.post('/',(req, res)=> {
     const schema = Joi.object({
         username : Joi.string().min(5).max(30).trim().required(),
-        password : Joi.string().min(5).max(30).trim().required()
+        password : Joi.string().trim().required()
         }) 
         .with('username', 'password')
 
@@ -28,8 +28,8 @@ app.post('/',(req, res)=> {
         res.send("Passed validation...you too sabi")
     }
     catch (err) {
-        console.log('Failed to validate input ' + err.details[0].message); 
+        res.send('Failed to validate input ' + err.details[0].message); 
     }
 })
 
-app.listen(8000);
+app.listen(3000);
