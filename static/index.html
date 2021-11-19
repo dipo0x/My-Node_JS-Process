@@ -1,0 +1,42 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+<meta name="google" content="notranslate" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+<center>
+<div class="jumbotron">       
+<h1><p>Welcome back!</h1>  <p>
+           
+ <h3><p>Login  </p></h3>
+
+<div class="textbox">
+    <form action="/" method="POST" id="form">  <p>
+    <input type="text" style="outline: hidden;" required align="center" name="username"  placeholder=" Enter your username." /><br />  </div>
+
+    <div class="textbox">
+        <input type="password" required align="center" name="password" placeholder="                ********" /></p>
+            </div>  
+        
+            <button style="background-color: green;" type="submit" value="Login" class="btn btn-primary"/> </center>               
+            <hr/>  
+        </div>
+    </div>
+</div>
+</form> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(()=>{
+        $('#form').submit((e)=>{
+            e.preventDefault();
+            $.ajax({
+                url:'/',
+                type: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify($('#form').serializeArray()),
+
+
+            })
+        })
+    })
+</script>
+</center>
