@@ -1,35 +1,23 @@
 const express = require('express');
+const { request } = require('http');
 const path = require('path');
-const bodyParser = require('body-parser');
-const Joi = require('joi');
 const app = express();
 
 app.use('/public', express.static(path.join(__dirname, 'static')));
-app.use(bodyParser.urlencoded({extended:false }));
-app.use(bodyParser.json());
 
-app.get('/',(req, res)=> {
-    res.sendFile(path.join(__dirname, 'static', 'index.html'))
-})
+//custom middleware and EJS Templates in Express
+app.use('', (req, res,next)=>{
+    req.banana = 'banana';
+    next();
+});
+app.set('view engine', 'ejs')
 
-app.post('/',(req, res)=> {
-    const schema = Joi.object({
-        username : Joi.string().min(5).max(30).trim().required(),
-        password : Joi.string().trim().required()
-        }) 
-        .with('username', 'password')
-
-        const username = req.body[0].value;
-        const password = req.body[1].value;
-
-    schema.validate({ username: username, password: password });
-    try{
-        const value = schema.validateAsync({ username, password })
-        res.send("Passed validation...you too sabi")
-    }
-    catch (err) {
-        res.send('Failed to validate input ' + err.details[0].message); 
-    }
+app.get('/:userQuery',(req, res)=> {
+    console.log(request.banana)
+    res.render('index', {data:{userQuery: req.params.userQuery,
+        searchResults: ['dipo book', 'dipo book2', 'dipo book3'],
+    loggedIn : true,
+    username: 'Oladipo'}});
 })
 
 app.listen(3000);

@@ -1,0 +1,22 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+<meta name="google" content="notranslate" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+<center>
+<div class="jumbotron">       
+<h1><p>Hello there!</h1>  <p>  
+<div class="textbox">
+<h1>You searched for : <%= data.userQuery %></h1>
+<% if(data.loggedIn){%>
+    <h2> Yre logged in as <%= data.username %></h2>
+    <%} %>
+
+<ul>
+    <% data.searchResults.forEach(result=>{%> <li> <%= result %> </li> <%}); %>
+</ul>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</center>
